@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: chargecore
+
+server:
+  port: 8081
