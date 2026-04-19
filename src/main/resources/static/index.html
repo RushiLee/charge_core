@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spiro Charge</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Leaflet (map) -->
+    <link
+            rel="stylesheet"
+            href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+            integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+            crossorigin=""
+    />
+</head>
+<body>
+<header class="topbar">
+    <div class="topbar__left">
+        <div class="brand">
+            <div class="brand__title">Spiro</div>
+            <div class="brand__subtitle">Charge — Smart Rider Hub</div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button id="btnBackTop" class="btn btn--ghost is-hidden" type="button">
+            Back
+        </button>
+        <button id="btnLocate" class="btn btn--primary" type="button">
+            Use my location
+        </button>
+        <button id="btnRefresh" class="btn" type="button">Refresh</button>
+    </div>
+</header>
+
+<main class="single">
+    <!-- HOME (dashboard) -->
+    <section id="homeView" class="home" aria-label="Dashboard">
+        <div class="homeCard">
+            <div class="homeCard__title">Predicted Range</div>
+            <div class="homeCard__range">
+                <div class="ring" aria-hidden="true"></div>
+                <div class="homeCard__rangeText">
+                    <div class="km">72</div>
+                    <div class="unit">KM Remaining</div>
+                </div>
+            </div>
+            <div class="homeCard__sub">Current range is a placeholder</div>
+        </div>
+
+        <div class="grid">
+            <button id="openSwap" class="tile tile--swap" type="button">
+                <div class="tile__icon">⚡</div>
+                <div class="tile__title">Smart Swap</div>
+                <div class="tile__sub">Find nearby batteries</div>
+            </button>
+
+            <button id="openService" class="tile tile--service" type="button">
+                <div class="tile__icon">🛠</div>
+                <div class="tile__title">Service Center</div>
+                <div class="tile__sub">Find nearby service</div>
+            </button>
+
+            <button class="tile tile--muted" type="button" disabled>
+                <div class="tile__icon">🩺</div>
+                <div class="tile__title">Diagnostic</div>
+                <div class="tile__sub">Coming soon</div>
+            </button>
+
+            <button class="tile tile--muted" type="button" disabled>
+                <div class="tile__icon">📅</div>
+                <div class="tile__title">Book Service</div>
+                <div class="tile__sub">Coming soon</div>
+            </button>
+        </div>
+    </section>
+
+    <!-- MAP (hidden until user chooses Smart Swap / Service Center) -->
+    <section id="mapView" class="mapScreen is-hidden" aria-label="Map view" hidden>
+        <div class="mapWrap mapWrap--full">
+            <div id="map" class="map" aria-label="Map"></div>
+
+            <div class="mapPanel" role="region" aria-label="Map controls">
+                <div class="mapPanel__top">
+                    <div class="mapPanel__title" id="mapTitle">Stations</div>
+                </div>
+
+                <div class="meta meta--compact">
+                    <div class="meta__row">
+                        <span class="meta__label">Status</span>
+                        <span id="statusText" class="meta__value">Ready</span>
+                    </div>
+                    <div class="meta__row">
+                        <span class="meta__label">Showing</span>
+                        <span id="markerCount" class="meta__value">—</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mapHint">
+                Use “Use my location”, then hover markers to see availability metadata.
+            </div>
+        </div>
+    </section>
+</main>
+
+<script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""
+></script>
+<script src="app.js"></script>
+</body>
+</html>
